@@ -1,0 +1,42 @@
+{
+  "name": "mfe-log",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "npm run setEntry && vue-cli-service serve --port 9001",
+    "serve_mfe": "cross-env NODE_ENV=mfe npm run serve",
+    "build": "npm run setEntry && vue-cli-service build",
+    "build_mfe": "cross-env NODE_ENV=mfe npm run build",
+    "setEntry": "node ./entry/setEntry.js",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.6.5",
+    "element-ui": "^2.11.1",
+    "rxjs": "^6.5.3",
+    "single-spa-vue": "^1.5.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-plugin-unit-mocha": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.1.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "vue-cli-plugin-single-spa": "^1.0.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
