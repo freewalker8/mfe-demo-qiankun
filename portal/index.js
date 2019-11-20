@@ -5,6 +5,8 @@
 
 import fetch from 'isomorphic-fetch';
 import Vue from 'vue';
+import Vuex from 'vuex';
+import VueRouter from 'vue-router';
 import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from 'qiankun';
 import Framework from './Framework.vue';
 
@@ -12,8 +14,10 @@ let app = null;
 
 function render({ appContent, loading }) {
   if (!app) {
+    Vue.use(Vuex);
     app = new Vue({
       el: '#container',
+      router: new VueRouter({}),
       data() {
         return {
           content: appContent,
