@@ -1,7 +1,6 @@
 import Vue from 'vue';
-import singleSpaVue from 'single-spa-vue';
 
-import './set-public-path';
+// import './set-public-path';
 
 import App from './App.vue';
 import router from './router';
@@ -9,19 +8,24 @@ import './utils/bus'; // 全局事件处理
 import 'element-ui/lib/theme-chalk/index.css';
 
 
-Vue.config.productionTip = false;
+// Vue.config.productionTip = false;
 
-const vueLifecycles = singleSpaVue({
-  Vue,
-  appOptions: {
-    render: h => h(App),
-    router,
-  },
-});
+let instance = null;
 
-export const bootstrap = vueLifecycles.bootstrap;
-export function mount(props) {
-  console.log(props.authToken); // do something with the common authToken
-  return vueLifecycles.mount(props);
+export async function bootstrap() {
+  console.log('vue app bootstraped');
 }
-export const unmount = vueLifecycles.unmount;
+
+export async function mount(props) {
+  console.log('props from main framework', props);
+  instance = new Vue({
+    el: '#vueRoot',
+    render: h => h(App),
+    router
+  });
+}
+
+export async function unmount() {
+  instance.$destroy();
+  instance = null;
+}

@@ -3,9 +3,9 @@
     <header class="header">
       <nav>
         <ol>
-          <li><a @click="goto('react app', '/react')">react16 + antd3</a></li>
-          <li><a @click="goto('react15 app', '/15react15')">react15 + antd2</a></li>
-          <li><a @click="goto('vue app', '/vue')">vue2 + element2</a></li>
+          <li><a @click="goto('mfe common', '/mfe-common')">mfe common</a></li>
+          <li><a @click="goto('mfe admin', '/mfe-admin')">mfe admin</a></li>
+          <li><a @click="goto('mfe log', '/mfe-log')">mfe log</a></li>
         </ol>
       </nav>
     </header>

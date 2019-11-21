@@ -1,5 +1,6 @@
 const ENV = process.env.NODE_ENV;
 const entry = './src/main.js';
+const packageName = 'common';
 
 module.exports = {
   chainWebpack: (config) => {
@@ -22,6 +23,10 @@ module.exports = {
 
     if (ENV === 'mfe') {
       config.externals(['vue', 'vue-router']);
+      config.output
+        .library(`${packageName}-[name]`)
+        .libraryTarget('umd')
+        .jsonpFunction(`webpackJsonp_${packageName}`);
     }
   },
   filenameHashing: false,

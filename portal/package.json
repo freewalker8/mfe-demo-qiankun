@@ -9,6 +9,7 @@
     "start:mfe-admin": "cd ../mfe-admin && npm serve_mfe",
     "start:mfe-log": "cd ../mfe-log && npm serve_mfe",
     "start:mfe-common": "cd ../mfe-common && npm serve_mfe",
+    "ins:mfe-pkg": "npm i && cd ../mfe-admin && npm i && cd ../mfe-log && npm i && cd ../mfe-common && npm i",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
