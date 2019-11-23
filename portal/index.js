@@ -53,9 +53,9 @@ const request = url =>
 
 registerMicroApps(
   [
-    { name: 'mfe-admin', entry: {scripts: ['//localhost:9002/app.js']}, render, activeRule: genActiveRule('/mfe-admin') },
-    { name: 'mfe-log', entry: {scripts: ['//localhost:9001/app.js']}, render, activeRule: genActiveRule('/mfe-log') },
-    { name: 'mfe-common', entry: {scripts: ['//localhost:9000/app.js']}, render, activeRule: genActiveRule('/mfe-common') },
+    { name: 'mfe-admin', entry: '//localhost:9002', render, activeRule: genActiveRule('/mfe-admin') },
+    { name: 'mfe-log', entry: '//localhost:9001', render, activeRule: genActiveRule('/mfe-log') },
+    { name: 'mfe-common', entry: '//localhost:9000', render, activeRule: genActiveRule('/mfe-common') },
   ],
   {
     beforeLoad: [
@@ -79,7 +79,7 @@ registerMicroApps(
   },
 );
 
-setDefaultMountApp('/mfe-admin');
+setDefaultMountApp('/mfe-common');
 runAfterFirstMounted(() => console.info('first app mounted'));
 
 start({ prefetch: true, fetch: request });

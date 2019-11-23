@@ -18,7 +18,7 @@ export async function bootstrap() {
 export async function mount(props) {
   console.log('props from main framework', props);
   instance = new Vue({
-    el: '#vueRoot',
+    el: '#spa-mfe-log',
     render: h => h(App),
     router,
     store

@@ -19,7 +19,7 @@ export async function bootstrap() {
 export async function mount(props) {
   console.log('props from main framework', props);
   instance = new Vue({
-    el: '#vueRoot',
+    el: '#spa-mfe-common',
     render: h => h(App),
     router
   });

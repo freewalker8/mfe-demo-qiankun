@@ -13,9 +13,8 @@
     <div id="wst-common-down">
       <div id="wst-common-sidenav">
         <ul>
-          <li><router-link to="/mfe_log"><i class=""></i>日志管理</router-link></li>
-          <li><router-link to="/mfe_admin"><i class=""></i>系统管理</router-link></li>
-          <li><router-link to="/mfe_react"><i class=""></i>React</router-link></li>
+          <li><router-link to="/mfe-log"><i class=""></i>日志管理</router-link></li>
+          <li><router-link to="/mfe-admin"><i class=""></i>系统管理</router-link></li>
         </ul>
       </div>
       <div id="wst-common-container">

@@ -4,10 +4,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-// import './set-public-path';
 
-
-// Vue.config.productionTip = false;
+Vue.config.productionTip = false;
 
 let instance = null;
 
@@ -18,7 +16,7 @@ export async function bootstrap() {
 export async function mount(props) {
   console.log('props from main framework', props);
   instance = new Vue({
-    el: '#vueRoot',
+    el: '#spa-mfe-admin',
     render: h => h(App),
     router,
     store

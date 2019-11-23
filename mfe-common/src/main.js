@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Router from 'vue-router';
 
 // import './set-public-path';
 
@@ -7,6 +8,7 @@ import router from './router';
 import './utils/bus'; // 全局事件处理
 import 'element-ui/lib/theme-chalk/index.css';
 
+Vue.use(Router);
 
 // Vue.config.productionTip = false;
 
@@ -19,7 +21,7 @@ export async function bootstrap() {
 export async function mount(props) {
   console.log('props from main framework', props);
   instance = new Vue({
-    el: '#vueRoot',
+    el: '#spa-mfe-common',
     render: h => h(App),
     router
   });

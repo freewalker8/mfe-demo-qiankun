@@ -20,13 +20,11 @@ module.exports = {
     //   'Content-Type': 'application/json;charset=utf-8',
     // });
 
-    if (ENV === 'mfe') {
-      config.externals(['vue', 'vue-router']);
-      config.output
-        .library(`${packageName}-[name]`)
-        .libraryTarget('umd')
-        .jsonpFunction(`webpackJsonp_${packageName}`);
-    }
+    
+    config.output
+      .library(`${packageName}-[name]`)
+      .libraryTarget('umd')
+      .jsonpFunction(`webpackJsonp_${packageName}`);
   },
   filenameHashing: false,
 }

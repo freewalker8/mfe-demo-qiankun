@@ -22,12 +22,12 @@ module.exports = {
     // });
 
     if (ENV === 'mfe') {
-      config.externals(['vue', 'vue-router']);
-      config.output
-        .library(`${packageName}-[name]`)
-        .libraryTarget('umd')
-        .jsonpFunction(`webpackJsonp_${packageName}`);
+      //config.externals(['vue', 'vue-router']);
     }
+    config.output
+      .library(`${packageName}-[name]`)
+      .libraryTarget('umd')
+      .jsonpFunction(`webpackJsonp_${packageName}`);
   },
   filenameHashing: false,
 }
