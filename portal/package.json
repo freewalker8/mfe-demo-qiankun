@@ -1,34 +1,44 @@
 {
-  "name": "main",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "mfe-common",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "concurrently \"npm run start:portal\" && \"npm run start:mfe-admin\" && \"npm run start:mfe-log\" && \"npm run start:mfe-common\"",
-    "start:portal": "parcel index.html --port 7099",
-    "start:mfe-admin": "cd ../mfe-admin && npm serve_mfe",
-    "start:mfe-log": "cd ../mfe-log && npm serve_mfe",
-    "start:mfe-common": "cd ../mfe-common && npm serve_mfe",
-    "ins:mfe-pkg": "npm i && cd ../mfe-admin && npm i && cd ../mfe-log && npm i && cd ../mfe-common && npm i",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@vue/component-compiler-utils": "^3.0.0",
-    "autoprefixer": "^9.5.1",
-    "less": "^3.9.0",
-    "parcel-bundler": "^1.12.3",
-    "postcss-modules": "^1.4.1",
-    "vue-template-compiler": "^2.6.10",
-    "concurrently": "^4.1.2"
+    "serve": "vue-cli-service serve --port 9000",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.6.5",
+    "element-ui": "^2.11.1",
     "isomorphic-fetch": "^2.2.1",
     "qiankun": "^1.3.5",
+    "rxjs": "^6.5.3",
+    "single-spa-vue": "^1.5.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1",
-    "vue-hot-reload-api": "^2.3.3"
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-plugin-unit-mocha": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
+    "@vue/component-compiler-utils": "^3.0.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "autoprefixer": "^9.5.1",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.1.2",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "vue-cli-plugin-single-spa": "^1.0.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10"
   }
 }

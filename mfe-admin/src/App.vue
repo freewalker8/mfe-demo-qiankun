@@ -1,9 +1,11 @@
 <template>
-  <div id="app">
+  <div id="spa-mfe-admin">
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="用户管理" name="userMgt"></el-tab-pane>
       <el-tab-pane label="增加用户" name="userAdd"></el-tab-pane>
     </el-tabs>
+    <!-- <router-link to="/user-mgt">用户管理</router-link>
+    <router-link to="/user-add">增加用户</router-link> -->
     <router-view/>
   </div>
 </template>
@@ -44,7 +46,7 @@ export default {
     handleClick({name}) {
       this.$router.push({name});
     },
-    linkToPage() {      
+    linkToPage() {
       const fullPath = this.$router.currentRoute.fullPath;
       if (fullPath === '/') {
         const key = '/user-mgt';

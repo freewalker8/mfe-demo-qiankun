@@ -20,4 +20,5 @@ export default new Router({
       component: () => import(/* webpackChunkName: "user_add" */ './views/user-add.vue'),
     },
   ],
+  // mode: 'history'
 });
