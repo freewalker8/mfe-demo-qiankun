@@ -7,12 +7,13 @@ import fetch from 'isomorphic-fetch';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
-import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from 'qiankun';
+import {
+  registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start 
+} from 'qiankun';
 import Framework from './App.vue';
-import bus from '@/utils/bus';
+import '@/utils/bus';
 
 import 'element-ui/lib/theme-chalk/index.css';
-
 
 let app = null;
 
@@ -51,29 +52,42 @@ function genActiveRule(routerPrefix) {
 render({ loading: true });
 
 // support custom fetch see: https://github.com/kuitos/import-html-entry/blob/91d542e936a74408c6c8cd1c9eebc5a9f83a8dc0/src/index.js#L163
-const request = url =>
-  fetch(url, {
-    referrerPolicy: 'origin-when-cross-origin',
-  });
+const request = url => fetch(url, {
+  referrerPolicy: 'origin-when-cross-origin',
+});
 
 registerMicroApps(
   [
-    { name: 'mfe-admin', entry: {scripts: ['//localhost:9002/app.js']}, render, activeRule: genActiveRule('/mfe-admin') },
-    { name: 'mfe-log', entry: '//localhost:9001', render, activeRule: genActiveRule('/mfe-log') },
+    { 
+      name: 'mfe-admin', 
+      // entry: {scripts: ['//localhost:9002/app.js']}, 
+      entry: '//localhost:9002', 
+      render, 
+      activeRule: genActiveRule('/mfe-admin') 
+    },
+    { 
+      name: 'mfe-log', 
+      entry: '//localhost:9001', 
+      render, 
+      activeRule: genActiveRule('/mfe-log') 
+    },
   ],
   {
     beforeLoad: [
-      app => {
+      // eslint-disable-next-line no-shadow
+      (app) => {
         console.log('before load', app);
       },
     ],
     beforeMount: [
-      app => {
+      // eslint-disable-next-line no-shadow
+      (app) => {
         console.log('before mount', app);
       },
     ],
     afterUnmount: [
-      app => {
+      // eslint-disable-next-line no-shadow
+      (app) => {
         console.log('after unload', app);
       },
     ],
@@ -83,7 +97,7 @@ registerMicroApps(
   },
 );
 
-setDefaultMountApp('/mfe-admin');
+setDefaultMountApp('/mfe-log');
 runAfterFirstMounted(() => console.info('first app mounted'));
 
 start({ prefetch: true, fetch: request });

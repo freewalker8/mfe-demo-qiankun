@@ -1,12 +1,16 @@
 import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 import App from './App.vue';
-import router from './router';
+import routes from './router';
 import store from './store';
+
+import './set-public-path';
 
 
 Vue.config.productionTip = false;
 
+let router = null;
 let instance = null;
 
 export async function bootstrap() {
@@ -15,6 +19,11 @@ export async function bootstrap() {
 
 export async function mount(props) {
   console.log('props from main framework', props);
+  router = new VueRouter({
+    base: '/mfe-admin',
+    mode: 'history',
+    routes,
+  });
   instance = new Vue({
     render: h => h(App),
     router,
@@ -25,4 +34,5 @@ export async function mount(props) {
 export async function unmount() {
   instance.$destroy();
   instance = null;
+  router = null;
 }

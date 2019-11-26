@@ -43,7 +43,6 @@ export default {
       event.preventDefault();
 
       if (!this.username || !this.email) {
-     
         return;
       }
 

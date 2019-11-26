@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "npm run setEntry && vue-cli-service serve --port 9001",
+    "serve": "npm run setEntry && vue-cli-service serve",
     "serve_mfe": "cross-env NODE_ENV=mfe npm run serve",
     "build": "npm run setEntry && vue-cli-service build",
     "build_mfe": "cross-env NODE_ENV=mfe npm run build",
