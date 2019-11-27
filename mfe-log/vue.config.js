@@ -12,7 +12,7 @@ module.exports = {
   // outputDir: 'dist',
   // assetsDir: 'static',
   filenameHashing: true,
-  // publicPath: `//localhost:${port}`,
+  publicPath: `//localhost:${port}`,
   // 自定义webpack配置
   devServer: {
     // host: '0.0.0.0',
@@ -52,7 +52,14 @@ module.exports = {
       .end();
 
     if (ENV === 'mfe') {      
-      // config.externals(['vue', 'vue-router', 'vuex']);      
+      config.externals({
+        vue: 'Vue',
+        vuex: 'Vuex',
+        'vue-router': 'VueRouter',
+        'vue-i18n': 'VueI18n',
+        // axios: 'axios',
+        // 'element-ui': 'ElementUI'
+      });      
     }
   },
 }

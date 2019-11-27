@@ -52,7 +52,14 @@ module.exports = {
       .end();
 
     if (ENV === 'mfe') {      
-      // config.externals(['vue', 'vue-router', 'vuex']);      
+      config.externals({
+        vue: 'Vue',
+        vuex: 'Vuex',
+        'vue-router': 'VueRouter',
+        'vue-i18n': 'VueI18n',
+        // axios: 'axios',
+        // 'element-ui': 'ElementUI'
+      });    
     }
   },
 }
