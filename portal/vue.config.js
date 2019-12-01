@@ -1,10 +1,46 @@
+/* eslint-disable no-shadow */
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
+
+/**
+ * 获取代理库地址
+ * @param {String} dir 目录地址
+ */
+function getPortalLibs(dir = './public/libs') {
+  const cssFiles = [];
+  const jsFiles = [];
+  const jsReg = /\.js$/;
+  const cssReg = /\.css$/;
+  const basePath = '/libs/';
+
+  try {
+    const files = fs.readdirSync(dir); 
+
+    files.map((file) => {
+      if (jsReg.test(file)) {
+        jsFiles.push(basePath + file);
+      } else if (cssReg.test(file)) {
+        cssFiles.push(basePath + file);
+      }
+      return file;
+    });
+
+    return {
+      cssFiles,
+      jsFiles
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const libs = getPortalLibs();
 
 const scriptPreloadAttr = {
   rel: 'preload',
@@ -13,29 +49,24 @@ const scriptPreloadAttr = {
 const scriptAttr = {
   type: 'text/javascript'
 }
-const scriptPreloads = [
-  '/libs/vue@2.6.10.min.js',
-  '/libs/vue-router@3.1.3.min.js',
-  '/libs/vuex@3.1.1.min.js',
-  '/libs/vue-i18n@8.14.1.min.js'
-]
+
 const links = [
   '/libs/font-awesome-4.7.0/css/font-awesome.min.css',
-  '/libs/bootstrap@4.3.1.min.css',
-  ...(scriptPreloads.map(path => {return {
+  ...libs.cssFiles,
+  ...(libs.jsFiles.map(path => ({
     path,
     publicPath: false,
     attributes: scriptPreloadAttr
-  }}))
+  })))
 ];
 
 const scripts = [
-  ...(scriptPreloads.map(path => {return {
+  ...(libs.jsFiles.map(path => ({
     path,
     publicPath: false,
-    append: false,
+    append: false, // 添加到已有脚本前面————代理库需要先加载
     attributes: scriptAttr
-  }}))
+  })))
 ];
 
 module.exports = {
@@ -48,10 +79,10 @@ module.exports = {
     externals: {
       vue: 'Vue',
       vuex: 'Vuex',
+      axios: 'axios',
       'vue-router': 'VueRouter',
       'vue-i18n': 'VueI18n',
-      // axios: 'axios',
-      // 'element-ui': 'ElementUI'
+      'element-ui': 'ElementUI'
     },
     plugins: [
       new HtmlWebpackTagsPlugin({
@@ -74,7 +105,6 @@ module.exports = {
     },
   },
   // chainWebpack: (config) => {
-  //   config.externals(['vue', 'vue-router', 'vuex', 'vue-i18n'])
   // },
   // filenameHashing: false,
 }
