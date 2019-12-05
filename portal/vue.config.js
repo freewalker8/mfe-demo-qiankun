@@ -1,7 +1,6 @@
 /* eslint-disable no-shadow */
 const path = require('path');
 const fs = require('fs');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
 function resolve(dir) {

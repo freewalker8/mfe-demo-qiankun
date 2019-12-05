@@ -6,7 +6,7 @@ function resolve(dir) {
 
 const ENV = process.env.NODE_ENV;
 const entry = './src/main.js';
-const port = 9001;
+const port = 8001;
 
 module.exports = {
   // outputDir: 'dist',

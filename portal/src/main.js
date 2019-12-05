@@ -60,14 +60,13 @@ registerMicroApps(
   [
     { 
       name: 'mfe-admin', 
-      // entry: {scripts: ['//localhost:9002/app.js']}, 
-      entry: '//localhost:9002', 
+      entry: '//localhost:8002', 
       render, 
       activeRule: genActiveRule('/mfe-admin') 
     },
     { 
       name: 'mfe-log', 
-      entry: '//localhost:9001', 
+      entry: '//localhost:8001', 
       render, 
       activeRule: genActiveRule('/mfe-log') 
     },
