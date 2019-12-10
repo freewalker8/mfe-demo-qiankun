@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "npm run setEntry && vue-cli-service serve",
-    "serve_mfe": "cross-env NODE_ENV=mfe npm run serve",
+    "serve_mfe": "cross-env NODE_ENV=mfe_dev npm run serve",
     "build": "npm run setEntry && vue-cli-service build",
-    "build_mfe": "cross-env NODE_ENV=mfe npm run build",
+    "build_mfe": "cross-env NODE_ENV=mfe_prod npm run build",
     "lint": "vue-cli-service lint",
     "setEntry": "node ./entry/setEntry.js",
     "test:unit": "vue-cli-service test:unit"
@@ -38,6 +38,7 @@
     "vue-cli-plugin-single-spa": "^1.0.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.41.0"
+    "webpack": "^4.41.0",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }

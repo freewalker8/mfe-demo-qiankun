@@ -1,4 +1,5 @@
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -51,15 +52,23 @@ module.exports = {
       .add(entry)
       .end();
 
-    if (ENV === 'mfe') {      
+    if (['mfe_dev', 'mfe_prod'].includes(ENV)) {      
       config.externals({
         vue: 'Vue',
         vuex: 'Vuex',
         'vue-router': 'VueRouter',
         'vue-i18n': 'VueI18n',
-        // axios: 'axios',
-        // 'element-ui': 'ElementUI'
+        axios: 'axios',
+        'element-ui': 'ElementUI'
       });      
+    }
+    if (['mfe_prod', 'production'].includes(ENV)) {
+      config.plugin('webpack-bundle-anlyzer')
+        .use(BundleAnalyzerPlugin)
+        .tap(args => [...args, {
+          analyzerPort: 8010
+        }])
+        .end()
     }
   },
 }

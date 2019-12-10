@@ -2,6 +2,9 @@
 const path = require('path');
 const fs = require('fs');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const ENV = process.env.NODE_ENV;
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -103,7 +106,15 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
-  // chainWebpack: (config) => {
-  // },
+  chainWebpack: (config) => {
+    if (ENV === 'production') {
+      config.plugin('webpack-bundle-anlyzer')
+        .use(BundleAnalyzerPlugin)
+        .tap(args => [...args, {
+          analyzerPort: 8888
+        }])
+        .end()
+    }
+  },
   // filenameHashing: false,
 }

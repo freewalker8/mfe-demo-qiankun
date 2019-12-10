@@ -13,8 +13,6 @@ import {
 import Framework from './App.vue';
 import '@/utils/bus';
 
-import 'element-ui/lib/theme-chalk/index.css';
-
 let app = null;
 
 function render({ appContent, loading }) {

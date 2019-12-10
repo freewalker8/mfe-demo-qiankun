@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const ENV = process.env.NODE_ENV;
-const entry = ENV !== 'mfe' ? './entry/main-dep.js' : './entry/main-mfe.js';
+const entry = ['mfe_dev', 'mfe_prod'].includes(ENV) ? './entry/main-mfe.js' : './entry/main-dep.js';
 const targetFile = './src/main.js';
 
 fs.readFile(entry, (error, data) => {
