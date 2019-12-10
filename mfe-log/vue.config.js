@@ -6,14 +6,14 @@ function resolve(dir) {
 }
 
 const ENV = process.env.NODE_ENV;
+const port = process.env.PORT || 8001;
 const entry = './src/main.js';
-const port = 8001;
 
 module.exports = {
   // outputDir: 'dist',
   // assetsDir: 'static',
   filenameHashing: true,
-  publicPath: `//localhost:${port}`,
+  // publicPath:`//localhost:${port}`, // mfe模式需要设置publicPath，在这里设置或在入口文件引入set-public-path打包时动态改变
   // 自定义webpack配置
   devServer: {
     // host: '0.0.0.0',
@@ -45,24 +45,28 @@ module.exports = {
     }
   },
   chainWebpack: (config) => {
+    const isMFE = ['mfe_dev', 'mfe_prod'].includes(ENV); // 是否是微前端模式
+    const isProd = ['mfe_prod', 'production'].includes(ENV); // 是否是生产模式
+
     console.log('env:', ENV);
     console.log('entry:', entry);
+    !isProd && console.log('dev port:', port);
 
     config.entry('app')
       .add(entry)
       .end();
 
-    if (['mfe_dev', 'mfe_prod'].includes(ENV)) {      
+    if (isMFE) {      
       config.externals({
         vue: 'Vue',
         vuex: 'Vuex',
         'vue-router': 'VueRouter',
         'vue-i18n': 'VueI18n',
         axios: 'axios',
-        'element-ui': 'ElementUI'
+        // 'element-ui': 'ElementUI'
       });      
     }
-    if (['mfe_prod', 'production'].includes(ENV)) {
+    if (isProd) {
       config.plugin('webpack-bundle-anlyzer')
         .use(BundleAnalyzerPlugin)
         .tap(args => [...args, {

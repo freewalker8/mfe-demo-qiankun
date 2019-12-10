@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "npm run setEntry && vue-cli-service serve",
-    "serve_mfe": "cross-env NODE_ENV=mfe_dev npm run serve",
+    "serve_mfe": "cross-env NODE_ENV=mfe_dev PORT=8001 npm run serve",
     "build": "npm run setEntry && vue-cli-service build",
     "build_mfe": "cross-env NODE_ENV=mfe_prod npm run build",
     "setEntry": "node ./entry/setEntry.js",
