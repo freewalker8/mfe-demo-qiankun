@@ -23,6 +23,8 @@ function getPortalLibs(dir = './public/libs') {
 
   try {
     const files = fs.readdirSync(dir); 
+    const vueLibs = [];
+    const thdLibs = [];
 
     files.map((file) => {
       if (jsReg.test(file)) {
@@ -33,9 +35,26 @@ function getPortalLibs(dir = './public/libs') {
       return file;
     });
 
+    // 分离出vue核心库和第三方库
+    jsFiles.map((lib) => {
+      if (lib.startsWith(`${basePath}vue`)) {
+        // vue核心最先加载
+        if (lib.split('@')[0] === `${basePath}vue`) {
+          vueLibs.unshift(lib);
+        } else {
+          vueLibs.push(lib);
+        }
+      } else {
+        thdLibs.push(lib);
+      }
+      return true;
+    });
+
+    console.log(vueLibs.join(','))
+
     return {
       cssFiles,
-      jsFiles
+      jsFiles: [...vueLibs, ...thdLibs] // 优先加载vue核心库
     }
   } catch (error) {
     throw new Error(error);
