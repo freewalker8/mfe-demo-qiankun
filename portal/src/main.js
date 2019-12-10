@@ -54,17 +54,27 @@ const request = url => fetch(url, {
   referrerPolicy: 'origin-when-cross-origin',
 });
 
+const prodPath = {
+  'mfe-admin': 'http://localhost:9002/',
+  'mfe-log': 'http://localhost:9001/'
+}
+const devPath = {
+  'mfe-admin': 'http://localhost:8002/',
+  'mfe-log': 'http://localhost:8001/'
+}
+const subAppPath = process.env.NODE_ENV === 'production' ? prodPath : devPath;
+
 registerMicroApps(
   [
     { 
       name: 'mfe-admin', 
-      entry: '//localhost:8002', 
+      entry: subAppPath['mfe-admin'], 
       render, 
       activeRule: genActiveRule('/mfe-admin') 
     },
     { 
       name: 'mfe-log', 
-      entry: '//localhost:8001', 
+      entry: subAppPath['mfe-log'], 
       render, 
       activeRule: genActiveRule('/mfe-log') 
     },
@@ -94,7 +104,7 @@ registerMicroApps(
   },
 );
 
-setDefaultMountApp('/mfe-log');
+setDefaultMountApp('/mfe-admin');
 runAfterFirstMounted(() => console.info('first app mounted'));
 
 start({ prefetch: true, fetch: request });

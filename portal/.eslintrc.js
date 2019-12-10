@@ -21,6 +21,7 @@ module.exports = {
     'import/extensions': 'off',
     'no-unused-expressions': 'off',
     "import/extensions": 'off',
+    "func-names": 'off'
   },
   parserOptions: {
     parser: 'babel-eslint'
