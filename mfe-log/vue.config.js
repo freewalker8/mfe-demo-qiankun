@@ -63,7 +63,7 @@ module.exports = {
         'vue-router': 'VueRouter',
         'vue-i18n': 'VueI18n',
         axios: 'axios',
-        // 'element-ui': 'ElementUI'
+        'element-ui': 'ElementUI'
       });      
     }
     if (isProd) {

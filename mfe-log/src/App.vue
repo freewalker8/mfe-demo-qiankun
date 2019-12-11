@@ -18,17 +18,6 @@
 
 <script>
 import Vue from 'vue';
-import {
-  Tabs, 
-  TabPane, 
-  Table, 
-  TableColumn
-} from 'element-ui';
-
-Vue.use(Tabs);
-Vue.use(TabPane);
-Vue.use(Table);
-Vue.use(TableColumn);
 
 export default {
   name: 'MfeLog',
