@@ -42,6 +42,11 @@ module.exports = {
       filename: '[name]-[hash].js',
       libraryTarget: 'umd',
       globalObject: 'this',
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all'
+      }
     }
   },
   chainWebpack: (config) => {

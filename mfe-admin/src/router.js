@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import UserMgt from './views/user-mgt.vue';
 
 Vue.use(VueRouter);
 
@@ -8,7 +7,7 @@ export default [
   {
     path: '/user-mgt',
     name: 'userMgt',
-    component: UserMgt,
+    component: () => import(/* webpackChunkName: "user_mgt" */ './views/user-mgt.vue'),
   },
   {
     path: '/user-add',

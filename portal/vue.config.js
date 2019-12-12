@@ -92,6 +92,11 @@ const scripts = [
 
 module.exports = {
   configureWebpack: {
+    optimization: {
+      splitChunks: {
+        chunks: 'all'
+      }
+    },
     resolve: {
       alias: {
         '@': resolve('src'),

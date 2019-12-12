@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import LogAccess from './views/log-access.vue';
 
 Vue.use(VueRouter);
 
@@ -8,7 +7,7 @@ export default [
   {
     path: '/log-access',
     name: 'logAccess',
-    component: LogAccess,
+    component: () => import(/* webpackChunkName: "logAccess" */ './views/log-access.vue'),
   },
   {
     path: '/log-login',
