@@ -38,7 +38,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['users'])
+    ...mapGetters('userMgt', ['users'])
   },
   methods: {
     addUser() {

@@ -52,7 +52,7 @@ export default {
         latestLogin: new Date().getTime()
       };
       
-      this.$store.commit('addUser', params);
+      this.$store.dispatch('userAdd/addUser', params);
      
       this.clearForm()
 

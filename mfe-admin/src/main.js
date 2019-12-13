@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 import App from './App.vue';
 import routes from './router';
-import store from './store';
+import store from './store/index';
 
 import './set-public-path';
 
