@@ -107,4 +107,4 @@ registerMicroApps(
 setDefaultMountApp('/mfe-admin');
 runAfterFirstMounted(() => console.info('first app mounted'));
 
-start({ prefetch: true, fetch: request });
+start({ prefetch: true, fetch: request, jsSandbox: false });

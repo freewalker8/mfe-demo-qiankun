@@ -5,7 +5,7 @@ import App from './App.vue';
 import routes from './router';
 import store from './store';
 
-import './set-public-path';
+// import './set-public-path';
 
 
 Vue.config.productionTip = false;
