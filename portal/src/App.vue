@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="wst-common-top">
-      <div id="wst-common-top__logo"><h1>卫士通通用管理平台</h1></div>
+      <div id="wst-common-top__logo"><h1>通用管理平台</h1></div>
       <div id="wst-common-top__nav">
         <a @click="goto('mfe admin', '/mfe-admin')"><i class=""></i>系统管理</a> | 
         <a @click="goto('mfe log', '/mfe-log')"><i class=""></i>日志管理</a>
