@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="mfe-log">
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane name="logAccess">
         <span slot="label">          

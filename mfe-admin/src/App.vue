@@ -1,5 +1,5 @@
 <template>
-  <div id="spa-mfe-admin">
+  <div id="mfe-admin">
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="用户管理" name="userMgt"></el-tab-pane>
       <el-tab-pane label="增加用户" name="userAdd"></el-tab-pane>

@@ -16,9 +16,9 @@ module.exports = {
   // publicPath:`//localhost:${port}`, // mfe模式需要设置publicPath，在这里设置或在入口文件引入set-public-path打包时动态改变
   // 自定义webpack配置
   devServer: {
-    // host: '0.0.0.0',
     hot: true,
     disableHostCheck: true,
+    historyApiFallback: true, // 404重定向到index.html
     port,
     overlay: {
       warnings: false,
@@ -30,7 +30,6 @@ module.exports = {
   },
   // 自定义webpack配置
   configureWebpack: {
-    // name: name,
     resolve: {
       alias: {
         '@': resolve('src')
