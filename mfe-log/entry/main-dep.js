@@ -14,6 +14,7 @@ import store from './store';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+Vue.use(VueRouter);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Table);
